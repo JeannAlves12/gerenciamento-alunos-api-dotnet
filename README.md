@@ -1,66 +1,46 @@
 # Gerenciamento de Alunos API
 
-API desenvolvida em **.NET** para gerenciamento de **Alunos e Cursos**, utilizando o padrão de arquitetura **Ports and Adapters (Arquitetura Hexagonal)**.
+🇬🇧 **Summary:** ASP.NET Core Web API to manage students and courses, built with Hexagonal Architecture (Ports and Adapters) to keep business rules decoupled from external technologies. Practice project.
 
-O objetivo do projeto é separar a lógica de negócio das tecnologias externas, garantindo um sistema desacoplado e organizado.
+🇧🇷 API em **.NET** para gerenciar **alunos e cursos**, usando **Arquitetura Hexagonal (Ports and Adapters)** para separar a lógica de negócio das tecnologias externas.
 
-## Estrutura do Projeto
+## Estrutura
 
-O projeto foi dividido em camadas:
+| Camada | Responsabilidade |
+|---|---|
+| **API** | Controllers que recebem as requisições HTTP |
+| **Domain** | Entidades, interfaces (portas) e regras de negócio |
+| **Data** | Implementações dos repositórios e contexto de dados (adaptadores) |
 
-- **API**  
-  Contém os Controllers responsáveis por receber as requisições HTTP.
+## Regras de negócio
 
-- **Domain**  
-  Contém as entidades, interfaces e regras de negócio.
+Validadas manualmente no `AlunoService`:
 
-- **Data**  
-  Contém as implementações dos repositórios e o contexto de dados.
+- `FirstName` não pode ser vazio
+- `FirstName` com no máximo 50 caracteres
+- `Email` deve terminar com `@faculdade.edu`
+- Não é permitido cadastrar dois alunos com o mesmo e-mail
 
-## Regras de Negócio
+## Tecnologias
 
-As validações são feitas manualmente no `AlunoService`.
+C#, .NET, ASP.NET Core Web API, Swagger
 
-- O campo **FirstName** não pode ser vazio
-- O **FirstName** deve ter no máximo **50 caracteres**
-- O **Email** deve terminar com `@faculdade.edu`
-- Não é permitido cadastrar dois alunos com o **mesmo email**
+## Como executar
 
-## Tecnologias Utilizadas
+```bash
+git clone https://github.com/JeannAlves12/gerenciamento-alunos-api-dotnet
+```
 
-- .NET
-- ASP.NET Core Web API
-- Swagger
-- C#
-
-## Como Executar
-
-1. Clonar o repositório
-git clone https://github.com/seu-usuario/gerenciamento-alunos.git
-
-2. Abrir o projeto no **Visual Studio**
-
-3. Executar a aplicação
-
-4. Acessar o Swagger:
-https://localhost:xxxx/swagger
-
+1. Abra `GerenciamentoAlunos.slnx` no **Visual Studio**
+2. Execute a aplicação
+3. Acesse o Swagger: `https://localhost:<porta>/swagger`
 
 ## Endpoints
 
-### Alunos
-- `GET /Aluno`
-- `POST /Aluno`
-- `PUT /Aluno/{id}`
-- `DELETE /Aluno/{id}`
+**Alunos:** `GET /Aluno` · `POST /Aluno` · `PUT /Aluno/{id}` · `DELETE /Aluno/{id}`
 
-### Cursos
-- `GET /Curso`
-- `GET /Curso/{id}`
-- `POST /Curso`
-- `PUT /Curso/{id}`
-- `DELETE /Curso/{id}`
+**Cursos:** `GET /Curso` · `GET /Curso/{id}` · `POST /Curso` · `PUT /Curso/{id}` · `DELETE /Curso/{id}`
 
----
+## Objetivo
 
-Projeto desenvolvido para prática de **Arquitetura Hexagonal e APIs em .NET**.
+Projeto de estudo para praticar Arquitetura Hexagonal e construção de APIs em .NET.
